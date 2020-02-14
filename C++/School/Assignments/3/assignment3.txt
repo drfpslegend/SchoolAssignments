@@ -1,0 +1,148 @@
+Kevin Holst, kevin_holst1@my.vcccd.edu
+
+1.i)
+
+#include <iostream>
+
+using namespace std;
+
+class Seminar
+{
+    private:
+        int time;
+    public:
+        Seminar();
+        Seminar(int);
+        ~Seminar();
+        void setTime(int);
+        int getTime();
+        void lecture();
+};
+
+Seminar::Seminar()
+{
+    time = 30;
+    cout << "Seminar starts now.";
+}
+
+Seminar::Seminar(int t)
+{
+    time = t;
+    cout << "Seminar starts now.";
+}
+
+Seminar::~Seminar()
+{
+    cout << "Thank you for attending the " << time << " minute seminar." << endl;
+}
+
+void Seminar::setTime(int t)
+{
+    time = t;
+}
+
+int Seminar::getTime()
+{
+    return time;
+}
+
+void Seminar::lecture()
+{
+    cout << "Here are the lecture notes...";
+}
+
+int main()
+{
+    Seminar beginningSem;
+    cout << endl;
+    cout << beginningSem.getTime() << " minutes for the introductory seminar" << endl;
+    beginningSem.lecture();
+    cout << endl << endl;
+    Seminar advancedSem(60);
+    cout << endl;
+    cout << advancedSem.getTime() << " minutes for the advanced seminar" << endl;
+    advancedSem.lecture();
+    cout << endl << endl;
+    
+    return 0;
+}
+
+1.ii)
+
+- This is called a destructor, and it is used to deallocate any memory that was allocated during the lifetime of the object.
+- It is called when the object goes out of scope, either in main() or in any function that uses instances of the class.
+
+1.iii)
+
+- Function 1 and 3 together illustrate the property of function overloading, in particular constructor overloading.
+- Because we might want to initialize our objects' member variables with values other than the default ones,
+we can write overloaded constructors that accept different numbers of arguments depending on what we want to initialize when we create the objects.
+
+2.i/2.ii/2.iii)
+
+#include <iostream>
+
+using namespace std;
+
+class Sample
+{
+    private:
+        int x;
+        double y;
+    public:
+        Sample();
+        Sample(int);
+        Sample(int, int);
+        Sample(int, double);
+        int getX();
+        double getY();
+};
+
+Sample::Sample()
+{
+    x = 0;
+    y = 0.0;
+}
+
+Sample::Sample(int x)
+{
+    this->x = x;
+    y = 0.0;
+}
+
+Sample::Sample(int x, int y)
+{
+    this->x = x;
+    this->y = y;
+}
+
+Sample::Sample(int x, double y)
+{
+    this->x = x;
+    this->y = y;
+}
+
+int Sample::getX()
+{
+    return x;
+}
+
+double Sample::getY()
+{
+    return y;
+}
+
+int main()
+{
+    Sample s1;
+    Sample s2(3);
+    Sample s3(4, 5);
+    Sample s4(6, 7.0);
+    
+    cout << "s1: x = " << s1.getX() << ", y = " << s1.getY() << endl;
+    cout << "s2: x = " << s2.getX() << ", y = " << s2.getY() << endl;
+    cout << "s3: x = " << s3.getX() << ", y = " << s3.getY() << endl;
+    cout << "s4: x = " << s4.getX() << ", y = " << s4.getY() << endl;
+
+    return 0;
+}
